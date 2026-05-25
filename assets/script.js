@@ -15,34 +15,29 @@ async function loadComponents() {
       contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
     }
 
-    // === IMPROVED LOCAL DEVELOPMENT FIX ===
+    // Local development fix: add .html when testing locally or on GitHub Pages
     const isLocalDev =
       window.location.protocol === 'file:' ||
       window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1';
 
     if (isLocalDev) {
-      // Automatically add .html to internal links when running locally
       document.querySelectorAll('nav a').forEach(link => {
         let href = link.getAttribute('href');
-        if (href &&
-          !href.startsWith('http') &&
-          !href.startsWith('#') &&
-          !href.endsWith('.html') &&
-          href !== '/') {
+        if (href && !href.startsWith('http') && !href.startsWith('#') && !href.endsWith('.html') && href !== 'index.html') {
           link.setAttribute('href', href + '.html');
         }
       });
     }
 
-    // Active link highlighting (works for both local and deployed)
+    // Active link highlighting
     let current = window.location.pathname.split('/').pop() || '';
     current = current.replace('.html', '');
-    if (current === '' || current === 'index') current = '/';
+    if (current === '' || current === 'index') current = 'index.html';
 
     document.querySelectorAll('nav a').forEach(link => {
       let href = link.getAttribute('href').replace('.html', '');
-      if (href === current || (href === '/' && current === '/')) {
+      if (href === current || (href === 'index' && current === 'index')) {
         link.classList.add('text-[#c5a05b]', 'font-semibold');
       }
     });
@@ -65,5 +60,5 @@ function toggleMobileMenu() {
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – Localhost .html fix applied', 'color:#c5a05b; font-size:14px');
+  console.log('%c✅ Burton Law Offices – Script reverted and ready', 'color:#c5a05b; font-size:14px');
 };
