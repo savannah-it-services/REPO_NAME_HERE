@@ -26,3 +26,16 @@
 .hero-bg {
     background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
 }
+
+/* Smooth mobile menu animation */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 400ms ease-out;
+    background-color: #0a2540;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu.open {
+    max-height: 400px; /* enough space for all menu items */
+}

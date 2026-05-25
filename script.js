@@ -15,7 +15,7 @@ async function loadComponents() {
       contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
     }
 
-    // Clean URL active link highlighting (works with or without .html)
+    // Active link highlighting
     let current = window.location.pathname.split('/').pop() || 'index';
     current = current.replace('.html', '');
     if (current === '') current = 'index';
@@ -31,19 +31,22 @@ async function loadComponents() {
   }
 }
 
+// Updated smooth toggle
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) {
+    menu.classList.toggle('open');
+  }
+}
+
 function handleContactSubmit(e) {
   e.preventDefault();
   alert("Thank you!\n\nThe contact form is not implemented yet.\n\nIn a real website this would send your message to Anthony Burton.");
   e.target.reset();
 }
 
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.toggle('hidden');
-}
-
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – Clean URLs active', 'color:#c5a05b; font-size:14px');
+  console.log('%c✅ Burton Law Offices – Smooth mobile menu active', 'color:#c5a05b; font-size:14px');
 };
