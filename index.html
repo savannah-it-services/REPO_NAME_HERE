@@ -1,10 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthony Burton Law Offices – Savannah, GA Criminal Defense, DUI & Family Law Attorney. Former Prosecutor.">
+    <title>Burton Law Offices | Savannah, GA Criminal Defense & Family Law</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body>
-<h1>Welcome to my page!</h1>
-<p>This site is hosted on GitHub Pages.</p>
+<body class="tailwind-ready">
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<header class="hero-bg h-screen flex items-center text-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <img src="logo.jpg" alt="Burton Law Offices" class="mx-auto h-28 mb-6">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold leading-tight mb-4">
+                Protecting Your Rights.<br>Delivering Results.
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8">
+                Anthony Burton – Former Prosecutor<br>
+                Criminal Defense • DUI • Family Law<br>
+                Savannah, Georgia
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:9124539479" class="bg-white text-[#0a2540] hover:bg-[#c5a05b] hover:text-white px-10 py-5 text-lg font-semibold rounded-md flex items-center justify-center gap-x-3">
+                    <span>CALL NOW</span>
+                    <span class="text-2xl">(912) 453-9479</span>
+                </a>
+                <a href="#contact" class="border-2 border-white hover:bg-white hover:text-[#0a2540] px-10 py-5 text-lg font-semibold rounded-md">
+                    FREE CONSULTATION
+                </a>
+            </div>
+            <p class="mt-6 text-sm uppercase tracking-widest text-white/70">100 Bull Street • Savannah, GA</p>
+        </div>
+    </div>
+</header>
+
+<!-- QUICK PRACTICE AREAS -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-3xl heading-font mb-12">Practice Areas</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <a href="criminal-defense.html" class="group border border-gray-200 hover:border-[#c5a05b] p-8 rounded-2xl">
+                <div class="text-[#c5a05b] text-5xl mb-4">⚖️</div>
+                <h3 class="text-2xl font-semibold mb-2">Criminal Defense</h3>
+                <p class="text-gray-600">Aggressive representation for felony and misdemeanor charges throughout Chatham County and coastal Georgia.</p>
+                <span class="text-[#c5a05b] group-hover:underline mt-6 inline-block">Learn more →</span>
+            </a>
+            <a href="dui.html" class="group border border-gray-200 hover:border-[#c5a05b] p-8 rounded-2xl">
+                <div class="text-[#c5a05b] text-5xl mb-4">🚗</div>
+                <h3 class="text-2xl font-semibold mb-2">DUI Defense</h3>
+                <p class="text-gray-600">Skilled defense against DUI, DWI, and license suspension cases. Former prosecutor perspective.</p>
+                <span class="text-[#c5a05b] group-hover:underline mt-6 inline-block">Learn more →</span>
+            </a>
+            <a href="family-law.html" class="group border border-gray-200 hover:border-[#c5a05b] p-8 rounded-2xl">
+                <div class="text-[#c5a05b] text-5xl mb-4">👨‍👩‍👧</div>
+                <h3 class="text-2xl font-semibold mb-2">Family Law</h3>
+                <p class="text-gray-600">Divorce, child custody, child support, and alimony. Compassionate guidance through difficult times.</p>
+                <span class="text-[#c5a05b] group-hover:underline mt-6 inline-block">Learn more →</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="py-20 navy-bg text-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="heading-font text-4xl mb-8">Why Clients Trust Burton Law Offices</h2>
+                <ul class="space-y-6">
+                    <li class="flex gap-x-4"><span class="text-[#c5a05b] text-2xl">✓</span> Former Chatham County Assistant District Attorney</li>
+                    <li class="flex gap-x-4"><span class="text-[#c5a05b] text-2xl">✓</span> Deep inside knowledge of how prosecutors build cases</li>
+                    <li class="flex gap-x-4"><span class="text-[#c5a05b] text-2xl">✓</span> Personalized, results-driven representation</li>
+                    <li class="flex gap-x-4"><span class="text-[#c5a05b] text-2xl">✓</span> Available 24/7 for urgent criminal matters</li>
+                    <li class="flex gap-x-4"><span class="text-[#c5a05b] text-2xl">✓</span> Hundreds of successful cases in Savannah courts</li>
+                </ul>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl">
+                <p class="italic text-xl">"Anthony Burton fought for me like I was family. He turned a serious felony charge into a dismissal. I can’t thank him enough."</p>
+                <p class="mt-6 text-sm">— J.M., Savannah, GA</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT FORM (now loaded from external file) -->
+<div id="contact-placeholder"></div>
+
+<div id="footer-placeholder"></div>
+<script src="script.js"></script>
 </body>
 </html>

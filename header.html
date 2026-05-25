@@ -1,0 +1,41 @@
+<nav class="navy-bg text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-x-3">
+            <img src="logo.jpg" alt="Burton Law Offices" class="h-12 w-auto">
+            <div>
+                <span class="text-2xl font-bold tracking-tight">BURTON</span>
+                <div class="text-[10px] tracking-[2px] text-[#c5a05b] -mt-1">LAW OFFICES</div>
+            </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+            <a href="index.html">HOME</a>
+            <a href="criminal-defense.html">CRIMINAL DEFENSE</a>
+            <a href="dui.html">DUI</a>
+            <a href="family-law.html">FAMILY LAW</a>
+            <a href="about.html">ABOUT</a>
+        </div>
+
+        <div class="flex items-center gap-x-4">
+            <a href="tel:9124539479" class="hidden sm:flex items-center gap-x-2 text-sm font-semibold hover:text-[#c5a05b]">
+                <span class="text-[#c5a05b]">☎</span> (912) 453-9479
+            </a>
+            <a href="#contact" onclick="document.getElementById('contact-form')?.scrollIntoView({behavior: 'smooth'})"
+               class="bg-[#c5a05b] hover:bg-amber-300 text-[#0a2540] px-6 py-3 rounded-md font-semibold text-sm">
+                FREE CONSULTATION
+            </a>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden navy-bg border-t border-white/10 px-6 py-4">
+        <div class="flex flex-col gap-y-4 text-sm font-medium">
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="criminal-defense.html" class="block py-2">Criminal Defense</a>
+            <a href="dui.html" class="block py-2">DUI</a>
+            <a href="family-law.html" class="block py-2">Family Law</a>
+            <a href="about.html" class="block py-2">About</a>
+            <a href="tel:9124539479" class="block py-3 text-center bg-[#c5a05b] text-[#0a2540] font-semibold rounded-md">Call (912) 453-9479</a>
+        </div>
+    </div>
+</nav>
