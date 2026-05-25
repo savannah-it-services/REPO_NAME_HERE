@@ -39,3 +39,12 @@
 .mobile-menu.open {
     max-height: 400px; /* enough space for all menu items */
 }
+
+/* FOUC Prevention - Hide content until fully loaded */
+body {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
+}

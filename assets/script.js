@@ -15,9 +15,8 @@ async function loadComponents() {
       contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
     }
 
-    // Local development fix: add .html when testing locally or on GitHub Pages
-    const isLocalDev =
-      window.location.protocol === 'file:' ||
+    // Local development .html fix
+    const isLocalDev = window.location.protocol === 'file:' ||
       window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1';
 
@@ -41,8 +40,14 @@ async function loadComponents() {
         link.classList.add('text-[#c5a05b]', 'font-semibold');
       }
     });
+
+    // === FOUC FIX ===
+    document.body.classList.add('loaded');
+
   } catch (e) {
     console.error('Error loading components:', e);
+    // Still show the page even if something fails
+    document.body.classList.add('loaded');
   }
 }
 
@@ -60,5 +65,5 @@ function toggleMobileMenu() {
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – Script reverted and ready', 'color:#c5a05b; font-size:14px');
+  console.log('%c✅ Burton Law Offices – FOUC fixed', 'color:#c5a05b; font-size:14px');
 };
