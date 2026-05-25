@@ -8,25 +8,33 @@ async function loadComponents() {
   const contactPlaceholder = document.getElementById('contact-placeholder');
 
   try {
-    // Load nav, footer, and contact form
     navPlaceholder.innerHTML = await (await fetch('nav.html')).text();
     footerPlaceholder.innerHTML = await (await fetch('footer.html')).text();
 
-    // Only load contact form on homepage (index.html)
     if (contactPlaceholder) {
       contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
     }
 
-    // Highlight active nav link
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Clean URL active link highlighting (works with or without .html)
+    let current = window.location.pathname.split('/').pop() || 'index';
+    current = current.replace('.html', '');
+    if (current === '') current = 'index';
+
     document.querySelectorAll('nav a').forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
+      const href = link.getAttribute('href').replace('.html', '');
+      if (href === current) {
         link.classList.add('text-[#c5a05b]', 'font-semibold');
       }
     });
   } catch (e) {
     console.error('Error loading components:', e);
   }
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  alert("Thank you!\n\nThe contact form is not implemented yet.\n\nIn a real website this would send your message to Anthony Burton.");
+  e.target.reset();
 }
 
 function toggleMobileMenu() {
@@ -37,5 +45,5 @@ function toggleMobileMenu() {
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – All components loaded', 'color:#c5a05b; font-size:14px');
+  console.log('%c✅ Burton Law Offices – Clean URLs active', 'color:#c5a05b; font-size:14px');
 };
