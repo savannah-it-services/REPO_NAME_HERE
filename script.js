@@ -15,27 +15,39 @@ async function loadComponents() {
       contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
     }
 
-    // Active link highlighting
-    let current = window.location.pathname.split('/').pop() || 'index';
+    // === IMPROVED LOCAL DEVELOPMENT FIX ===
+    const isLocalDev =
+      window.location.protocol === 'file:' ||
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
+
+    if (isLocalDev) {
+      // Automatically add .html to internal links when running locally
+      document.querySelectorAll('nav a').forEach(link => {
+        let href = link.getAttribute('href');
+        if (href &&
+          !href.startsWith('http') &&
+          !href.startsWith('#') &&
+          !href.endsWith('.html') &&
+          href !== '/') {
+          link.setAttribute('href', href + '.html');
+        }
+      });
+    }
+
+    // Active link highlighting (works for both local and deployed)
+    let current = window.location.pathname.split('/').pop() || '';
     current = current.replace('.html', '');
-    if (current === '') current = 'index';
+    if (current === '' || current === 'index') current = '/';
 
     document.querySelectorAll('nav a').forEach(link => {
-      const href = link.getAttribute('href').replace('.html', '');
-      if (href === current) {
+      let href = link.getAttribute('href').replace('.html', '');
+      if (href === current || (href === '/' && current === '/')) {
         link.classList.add('text-[#c5a05b]', 'font-semibold');
       }
     });
   } catch (e) {
     console.error('Error loading components:', e);
-  }
-}
-
-// Updated smooth toggle
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) {
-    menu.classList.toggle('open');
   }
 }
 
@@ -45,8 +57,13 @@ function handleContactSubmit(e) {
   e.target.reset();
 }
 
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.toggle('open');
+}
+
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – Smooth mobile menu active', 'color:#c5a05b; font-size:14px');
+  console.log('%c✅ Burton Law Offices – Localhost .html fix applied', 'color:#c5a05b; font-size:14px');
 };
