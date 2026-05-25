@@ -1,7 +1,8 @@
+<!-- nav.html -->
 <nav class="navy-bg text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-x-3">
-            <img src="logo.jpg" alt="Burton Law Offices" class="h-12 w-auto">
+            <img src="logo.png" alt="Burton Law Offices" class="h-12 w-auto">
             <div>
                 <span class="text-2xl font-bold tracking-tight">BURTON</span>
                 <div class="text-[10px] tracking-[2px] text-[#c5a05b] -mt-1">LAW OFFICES</div>
@@ -17,13 +18,18 @@
         </div>
 
         <div class="flex items-center gap-x-4">
+            <!-- Phone number (already hidden on very small screens) -->
             <a href="tel:9124539479" class="hidden sm:flex items-center gap-x-2 text-sm font-semibold hover:text-[#c5a05b]">
                 <span class="text-[#c5a05b]">☎</span> (912) 453-9479
             </a>
+
+            <!-- FREE CONSULTATION button – now hidden on small mobile screens -->
             <a href="#contact" onclick="document.getElementById('contact-form')?.scrollIntoView({behavior: 'smooth'})"
-               class="bg-[#c5a05b] hover:bg-amber-300 text-[#0a2540] px-6 py-3 rounded-md font-semibold text-sm">
+               class="hidden sm:flex bg-[#c5a05b] hover:bg-amber-300 text-[#0a2540] px-6 py-3 rounded-md font-semibold text-sm">
                 FREE CONSULTATION
             </a>
+
+            <!-- Mobile hamburger -->
             <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
         </div>
     </div>
