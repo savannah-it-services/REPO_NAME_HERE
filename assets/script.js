@@ -8,14 +8,14 @@ async function loadComponents() {
   const contactPlaceholder = document.getElementById('contact-placeholder');
 
   try {
-    navPlaceholder.innerHTML = await (await fetch('nav.html')).text();
-    footerPlaceholder.innerHTML = await (await fetch('footer.html')).text();
+    navPlaceholder.innerHTML = await (await fetch('components/header.html')).text();
+    footerPlaceholder.innerHTML = await (await fetch('components/footer.html')).text();
 
     if (contactPlaceholder) {
-      contactPlaceholder.innerHTML = await (await fetch('contact-form.html')).text();
+      contactPlaceholder.innerHTML = await (await fetch('components/contact-form.html')).text();
     }
 
-    // Local development .html fix
+    // Local development fix
     const isLocalDev = window.location.protocol === 'file:' ||
       window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1';
@@ -41,12 +41,10 @@ async function loadComponents() {
       }
     });
 
-    // === FOUC FIX ===
-    document.body.classList.add('loaded');
-
   } catch (e) {
     console.error('Error loading components:', e);
-    // Still show the page even if something fails
+  } finally {
+    // Always make the page visible, even if something fails
     document.body.classList.add('loaded');
   }
 }
@@ -65,5 +63,4 @@ function toggleMobileMenu() {
 window.onload = function () {
   initializeTailwind();
   loadComponents();
-  console.log('%c✅ Burton Law Offices – FOUC fixed', 'color:#c5a05b; font-size:14px');
 };
