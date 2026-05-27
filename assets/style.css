@@ -23,11 +23,13 @@
     background-color: #0a2540;
 }
 
+/* UPDATED SAVANNAH BACKGROUND - used by every page */
 .hero-bg {
-    background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+    background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.85)),
+    url('../images/savannah-background.webp') center/cover no-repeat fixed;
 }
 
-/* Smooth mobile menu animation */
+/* Mobile menu animation */
 .mobile-menu {
     max-height: 0;
     overflow: hidden;
@@ -37,10 +39,9 @@
 }
 
 .mobile-menu.open {
-    max-height: 400px; /* enough space for all menu items */
+    max-height: 400px;
 }
 
-/* FOUC Prevention - Hide content until fully loaded */
 body {
     opacity: 0;
 }
