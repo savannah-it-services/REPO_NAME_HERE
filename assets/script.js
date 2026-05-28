@@ -56,6 +56,7 @@ async function loadComponents() {
     });
 
   } catch (e) {
+
     console.error('Error loading components:', e);
   } finally {
     // Always make the page visible, even if something fails
