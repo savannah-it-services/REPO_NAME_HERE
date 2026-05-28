@@ -41,6 +41,20 @@ async function loadComponents() {
       }
     });
 
+    // Attach smooth scrolling to anchor links (e.g. #contact)
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const hash = link.getAttribute('href');
+        const targetId = hash.substring(1);
+
+        // Only handle internal anchors that exist on the page
+        if (document.getElementById(targetId)) {
+          e.preventDefault();
+          smoothScrollTo(targetId);
+        }
+      });
+    });
+
   } catch (e) {
     console.error('Error loading components:', e);
   } finally {
@@ -60,7 +74,46 @@ function toggleMobileMenu() {
   if (menu) menu.classList.toggle('open');
 }
 
+/**
+ * Smoothly scroll to an element, accounting for the sticky navigation height.
+ */
+function smoothScrollTo(targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  const nav = document.querySelector('nav');
+  const navHeight = nav ? nav.offsetHeight : 80;
+
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+  const offsetPosition = targetPosition - navHeight - 16; // small extra padding
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+
+  // Close mobile menu if open
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (mobileMenu && mobileMenu.classList.contains('open')) {
+    mobileMenu.classList.remove('open');
+  }
+}
+
 window.onload = function () {
   initializeTailwind();
   loadComponents();
 };
+
+// Also attach smooth scroll handlers to any existing # anchors on the page
+// (useful for hero buttons on index.html before components finish loading)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href').substring(1);
+      if (document.getElementById(targetId)) {
+        e.preventDefault();
+        setTimeout(() => smoothScrollTo(targetId), 10);
+      }
+    });
+  });
+});

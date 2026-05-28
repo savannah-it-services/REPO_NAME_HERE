@@ -11,6 +11,11 @@
     transition-duration: 150ms;
 }
 
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
 .tailwind-ready {
     font-family: 'Inter', system_ui, sans-serif;
 }
